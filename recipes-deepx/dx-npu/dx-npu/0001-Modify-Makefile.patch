@@ -1,0 +1,37 @@
+From b5e328807ceec8fe1a934c81dfb6dcd6bb350a55 Mon Sep 17 00:00:00 2001
+From: Mateusz Koza <mateusz.koza@grinn-global.com>
+Date: Mon, 17 Feb 2025 16:49:42 +0100
+Subject: [PATCH] Modify Makefile
+
+---
+ modules/Makefile | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/modules/Makefile b/modules/Makefile
+index 70002fb..6a5a051 100644
+--- a/modules/Makefile
++++ b/modules/Makefile
+@@ -33,18 +33,20 @@ PCIE_VERSION_MAJOR := $(shell echo $(VERSION_STRING) | cut -d'.' -f1)
+ PCIE_VERSION_MINOR := $(shell echo $(VERSION_STRING) | cut -d'.' -f2)
+ PCIE_VERSION_PATCH := $(shell echo $(VERSION_STRING) | cut -d'.' -f3)
+ 
+-all: check_kbuild_config
++all:
+ 	@echo "** RT Driver Version : $(RT_VERSION_MAJOR).$(RT_VERSION_MINOR).$(RT_VERSION_PATCH) **"
+ 	@echo "** PCie Driver Version : $(PCIE_VERSION_MAJOR).$(PCIE_VERSION_MINOR).$(PCIE_VERSION_PATCH) **"
+ 	$(MAKE) -C $(KERNEL_DIR) M=$(MODULE_DIR) $(KERNEL_ARCH) modules \
+ 		CCFLAGS="-DRT_VERSION_MAJOR=$(RT_VERSION_MAJOR) -DRT_VERSION_MINOR=$(RT_VERSION_MINOR) -DRT_VERSION_PATCH=$(RT_VERSION_PATCH) \
+ 		-DPCIE_VERSION_MAJOR=$(PCIE_VERSION_MAJOR) -DPCIE_VERSION_MINOR=$(PCIE_VERSION_MINOR) -DPCIE_VERSION_PATCH=$(PCIE_VERSION_PATCH)"
+ 
+-install:
++modules_install:
+ 	$(MAKE) -C $(KERNEL_DIR) M=$(MODULE_DIR) $(KERNEL_ARCH) modules_install
+ 
+ clean:
+-	$(MAKE) -C $(KERNEL_DIR) M=$(MODULE_DIR) $(KERNEL_ARCH) clean
++	rm -rf *.o *~ core .depend .*.cmd *.ko *.mod.c
++	rm -rf Module.markers Module.symvers modules.order
++	rm -rf .tmp_versions Modules.symvers
+ 
+ sparse:
+ 	$(MAKE) -C $(KERNEL_DIR) M=$(MODULE_DIR) $(KERNEL_ARCH) C=1 W=1

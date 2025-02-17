@@ -1,11 +1,13 @@
 SUMMARY = "DX-NPU"
 DESCRIPTION = "DX-NPU"
 LICENSE = "DEEPX"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
+LIC_FILES_CHKSUM = "file://../LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 inherit module
 
-SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-npu.git;protocol=ssh;branch=master"
+SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-npu.git;protocol=ssh;branch=master \
+           file://0001-Modify-Makefile.patch;patchdir=.. \
+           "
 SRCREV = "217b02ec5a93fec90cf68abf77cae0a55f2e1a89"
 PV = "1.0+git${SRCPV}"
 
