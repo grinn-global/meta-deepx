@@ -9,17 +9,25 @@ SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-npu.git;protocol=ssh;branch=m
            file://0001-Modify-Makefile.patch;patchdir=.. \
            "
 SRCREV = "217b02ec5a93fec90cf68abf77cae0a55f2e1a89"
+
 PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git/modules"
 
-PROVIDES_${PN} = "kernel-module-dx-npu"
+PROVIDES:${PN} = "kernel-module-${PN}"
 
 DX_DEVICE ?= "m1a"
 DX_PCIE ?= "deepx"
 
 EXTRA_OEMAKE = "DEVICE=${DX_DEVICE} \
                 PCIE=${DX_PCIE} \
-                ARCH=${ARCH} \
+                ARCH=${TARGET_ARCH} \
                 CROSS_COMPILE=${TARGET_PREFIX} \
                 KERNEL_DIR=${STAGING_KERNEL_DIR}"
+
+KERNEL_MODULE_AUTOLOAD += "dx_dma" 
+
+do_install:append() {
+    install -d ${D}${sysconfdir}/modprobe.d
+    install -m 0644 ${S}/dx_dma.conf ${D}${sysconfdir}/modprobe.d/
+}
