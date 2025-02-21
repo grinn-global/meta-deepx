@@ -14,11 +14,31 @@ S = "${WORKDIR}/git"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
 
+# TODO:
+# if use service then copy service files
+# install python package
+
+DX_USE_ORT ?= "1"
+DX_USE_PYTHON ?= "1"
+DX_USE_SERVICE ?= "1"
+DX_USE_SHARED_DXRT_LIB ?= "1"
+
+EXTRA_OECMAKE = "-DUSE_ORT=${DX_USE_ORT} \
+                -DUSE_PYTHON=${DX_USE_PYTHON} \
+                -DUSE_SERVICE=${DX_USE_SERVICE} \
+                -DUSE_SHARED_DXRT_LIB=${DX_USE_SHARED_DXRT_LIB} \
+                -Donnxruntime_INCLUDE_DIRS=${STAGING_INCDIR}/onnxruntime \
+                -Donnxruntime_LIB_DIRS=${STAGING_LIBDIR}/onnxruntime \
+                "
+
+DEPENDS += "${@bb.utils.contains('DX_USE_ORT', '1', 'onnxruntime', '', d)}"
+
 do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${B}/bin/* ${D}${bindir}
 
-    install -d ${D}${libdir}
-    install -m 0755 ${B}/lib/*.so ${D}${libdir}
+    if [ "${DX_USE_SHARED_DXRT_LIB}" = "1" ]; then
+        install -d ${D}${libdir}
+        install -m 0755 ${B}/lib/*.so ${D}${libdir}
+    fi
 }
-
