@@ -1,17 +1,15 @@
 # DeepX Yocto Meta Layer
 
-## Adding the meta-deepx layer to your build
+## Using the meta-deepx layer
 
 To add the meta-deepx layer to your build, run the following command:
 ```bash
 bitbake-layers add-layer meta-deepx
 ```
 
-## Using the meta-deepx layer
-
 To use the meta-deepx layer, add the following to your local.conf:
 ```bash
-IMAGE_INSTALL:append = " dx-npu dx-rt"
+IMAGE_INSTALL:append = " dx-rt"
 ```
 
 To supress the QA warning, add the following to your local.conf:
@@ -29,9 +27,13 @@ DX_USE_SERVICE = "1" | "0"
 DX_USE_SHARED_DXRT_LIB = "1" | "0"
 ```
 
+Note that the dx-npu recipe requires `DMA_ENGINE` option to be enabled in the kernel. Use this command to modify the kernel configuration:
+```bash
+bitbake -c menuconfig virtual/kernel
+```
+
 ## TODO
 
-* add Kconfig fragments (DMA_ENGINE)
 * add python package in dx-rt
 * add onnxruntime recipe
 * add dx-app

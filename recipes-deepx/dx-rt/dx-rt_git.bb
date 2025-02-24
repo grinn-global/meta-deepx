@@ -1,5 +1,5 @@
-SUMMARY = "DX-RT"
-DESCRIPTION = "DX-RT"
+DESCRIPTION = "DX-RT - DeepX Runtime and  Userspace Tools"
+HOMEPAGE = "https://deepx.ai"
 LICENSE = "DEEPX"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
@@ -8,8 +8,8 @@ inherit cmake systemd
 SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-rt.git;protocol=ssh;branch=master \
            file://0001-Modify-Service.patch \
            "
-SRCREV = "2.6.3"
-PV = "${SRCREV}+git${SRCPV}"
+SRCREV = "c19139fe2a2224492e209853b110376c8fc9a1c1"
+PV = "2.6.3+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
@@ -30,6 +30,10 @@ EXTRA_OECMAKE = "-DUSE_ORT=${DX_USE_ORT} \
                 "
 
 DEPENDS += "${@bb.utils.contains('DX_USE_ORT', '1', 'onnxruntime', '', d)}"
+RDEPENDS:${PN} += "dx-npu \
+    ${@bb.utils.contains('DX_USE_PYTHON', '1', 'python3', '', d)} \
+    ${@bb.utils.contains('DX_USE_ORT', '1', 'onnxruntime', '', d)}"
+
 SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DX_USE_SERVICE', '1', 'dxrt.service', '', d)}"
 
 do_install() {
