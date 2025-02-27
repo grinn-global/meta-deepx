@@ -2,9 +2,9 @@
 
 ## Using the meta-deepx layer
 
-To add the meta-deepx layer to your build, run the following command:
+To add the meta-deepx layer to your build, run the following command in the build directory:
 ```bash
-bitbake-layers add-layer meta-deepx
+bitbake-layers add-layer ../meta-deepx
 ```
 
 To use the meta-deepx layer, add the following to your local.conf:
