@@ -40,6 +40,7 @@ DX_ENABLE_DEBUG_INFO = "1"
 
 ## TODO
 
+* fix USE_SERVICE bug (ftok2 error)
 * add python package in dx-rt
 * add onnxruntime recipe
 * add dx-app
