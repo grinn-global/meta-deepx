@@ -16,15 +16,17 @@ S = "${WORKDIR}/git"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
 
-DX_USE_ORT ?= "1"
+DX_USE_ORT ?= "0"
 DX_USE_PYTHON ?= "1"
 DX_USE_SERVICE ?= "1"
 DX_USE_SHARED_DXRT_LIB ?= "1"
+DX_ENABLE_DEBUG_INFO ?= "1"
 
 EXTRA_OECMAKE = "-DUSE_ORT=${DX_USE_ORT} \
                 -DUSE_PYTHON=${DX_USE_PYTHON} \
                 -DUSE_SERVICE=${DX_USE_SERVICE} \
                 -DUSE_SHARED_DXRT_LIB=${DX_USE_SHARED_DXRT_LIB} \
+                -DENABLE_DEBUG_INFO=${DX_ENABLE_DEBUG_INFO} \
                 -Donnxruntime_INCLUDE_DIRS=${STAGING_INCDIR}/onnxruntime \
                 -Donnxruntime_LIB_DIRS=${STAGING_LIBDIR}/onnxruntime \
                 "
