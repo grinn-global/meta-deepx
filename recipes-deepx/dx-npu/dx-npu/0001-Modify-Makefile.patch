@@ -2,7 +2,8 @@ From b5e328807ceec8fe1a934c81dfb6dcd6bb350a55 Mon Sep 17 00:00:00 2001
 From: Mateusz Koza <mateusz.koza@grinn-global.com>
 Date: Mon, 17 Feb 2025 16:49:42 +0100
 Subject: [PATCH] Modify Makefile
-
+Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
+Upstream-Status: Pending
 ---
  modules/Makefile | 8 +++++---
  1 file changed, 5 insertions(+), 3 deletions(-)
