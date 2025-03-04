@@ -22,25 +22,24 @@ Note that the dx-npu recipe requires `DMA_ENGINE` option to be enabled in the ke
 bitbake -c menuconfig virtual/kernel
 ```
 
-To modify the configuration, change these default values in your `local.conf`:
+This layer provides the following configuration options:
+* `DX_DEVICE` - choose the device (m1, m1a, l1, l3)
+* `DX_PCIE` - choose the PCIe (deepx, xilinx)
+* `PACKAGECONFIG[onnxruntime]` - use ONNX Runtime for unsupported operations (requires `onnxruntime` recipe, version `1.12.0`)
+* `PACKAGECONFIG[python]` - enable Python bindings
+* `PACKAGECONFIG[service]` - enable DX-RT service (support for multiple processes)
+* `PACKAGECONFIG[shared_dxrt_lib]` - use shared DX-RT library
+
+The default configuration is equivalent to the following:
 ```bash
-# "m1", "m1a", "l1", "l3"
 DX_DEVICE = "m1a"
-
-# "deepx", "pcie"
 DX_PCIE = "deepx"
-
-# "1", "0"
-DX_USE_ORT = "0"
-DX_USE_PYTHON = "1"
-DX_USE_SERVICE = "1"
-DX_USE_SHARED_DXRT_LIB = "1"
-DX_ENABLE_DEBUG_INFO = "1"
+PACKAGECONFIG:pn-dx-rt = " python service shared_dxrt_lib"
 ```
-Note that the `DX_USE_ORT` option requires the `onnxruntime` recipe in version `1.12.0`.
+Modify these variables in your `local.conf` to change the default behavior.
 
 ## TODO
 
-* fix USE_SERVICE bug (ftok2 error) (set to 0 to make it work)
+* fix USE_SERVICE bug (ftok2 error)
 * add ctypes dependency in dx-rt
 * add dx-app
