@@ -2,7 +2,8 @@ From bcbdfb176bdd289d2f5191a4bc49a4b63d86b0dd Mon Sep 17 00:00:00 2001
 From: Mateusz Koza <mateusz.koza@grinn-global.com>
 Date: Mon, 3 Mar 2025 20:10:10 +0100
 Subject: [PATCH] Modify CMakeLists.txt
-
+Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
+Upstream-Status: Pending
 ---
  CMakeLists.txt | 14 +-------------
  1 file changed, 1 insertion(+), 13 deletions(-)

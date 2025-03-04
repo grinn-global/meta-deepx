@@ -1,14 +1,16 @@
-DESCRIPTION = "DX-RT - DeepX Runtime and  Userspace Tools"
+SUMMARY = "DX-RT"
+DESCRIPTION = "DeepX Runtime and Userspace Tools"
 HOMEPAGE = "https://deepx.ai"
 LICENSE = "DEEPX"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
+DEPENDS += "${ONNXRUNTIME_DEP}"
+
+PV = "2.6.3+git${SRCPV}"
 SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-rt.git;protocol=ssh;branch=master \
            file://0001-Modify-Service.patch \
-           file://0001-Modify-CMakeLists.txt.patch \
-           "
+           file://0001-Modify-CMakeLists.txt.patch"
 SRCREV = "c19139fe2a2224492e209853b110376c8fc9a1c1"
-PV = "2.6.3+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
@@ -22,15 +24,12 @@ inherit cmake
 inherit ${@oe.utils.conditional('DX_USE_PYTHON', '1', 'setuptools3', '', d)}
 inherit ${@oe.utils.conditional('DX_USE_SERVICE', '1', 'systemd', '', d)}
 
-ONNXRUNTIME_DEP = "${@oe.utils.conditional('DX_USE_ORT', '1', 'onnxruntime', '', d)}"
-
-DEPENDS += "${ONNXRUNTIME_DEP}"
-RDEPENDS:${PN} += "dx-npu ${ONNXRUNTIME_DEP}"
-
 SETUPTOOLS_SETUP_PATH = "${S}/python_package"
 SYSTEMD_SERVICE:${PN} = "dxrt.service"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
+ONNXRUNTIME_DEP = "${@oe.utils.conditional('DX_USE_ORT', '1', 'onnxruntime', '', d)}"
+RDEPENDS:${PN} += "${ONNXRUNTIME_DEP} dx-npu"
 
 EXTRA_OECMAKE = "-DUSE_ORT=${DX_USE_ORT} \
                  -DUSE_PYTHON=${DX_USE_PYTHON} \
@@ -41,8 +40,7 @@ EXTRA_OECMAKE = "-DUSE_ORT=${DX_USE_ORT} \
                  -Donnxruntime_LIB_DIRS=${STAGING_LIBDIR}/onnxruntime \
                  -DPYTHON_INCLUDE_DIRS=${STAGING_INCDIR}/${PYTHON_DIR} \
                  -DCROSS_COMPILE=TRUE \
-                 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-                 "
+                 -DCMAKE_BUILD_TYPE=RelWithDebInfo"
 
 do_configure() {
     cmake_do_configure

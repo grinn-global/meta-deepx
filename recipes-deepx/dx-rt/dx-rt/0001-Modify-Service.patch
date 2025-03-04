@@ -2,7 +2,8 @@ From 167c3f3a55be3ff931532c7412c2984eef4a5104 Mon Sep 17 00:00:00 2001
 From: Mateusz Koza <mateusz.koza@grinn-global.com>
 Date: Fri, 21 Feb 2025 16:11:25 +0100
 Subject: [PATCH] Modify Service
-
+Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
+Upstream-Status: Pending
 ---
  service/dxrt.service | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
