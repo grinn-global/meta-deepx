@@ -37,9 +37,10 @@ DX_USE_SERVICE = "1"
 DX_USE_SHARED_DXRT_LIB = "1"
 DX_ENABLE_DEBUG_INFO = "1"
 ```
+Note that the `DX_USE_ORT` option requires the `onnxruntime` recipe in version `1.12.0`.
 
 ## TODO
 
 * fix USE_SERVICE bug (ftok2 error) (set to 0 to make it work)
-* add ctypes dependency
+* add ctypes dependency in dx-rt
 * add dx-app
