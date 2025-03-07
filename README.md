@@ -40,6 +40,5 @@ Modify these variables in your `local.conf` to change the default behavior.
 
 ## TODO
 
-* fix USE_SERVICE bug (ftok2 error)
+* change ftok path to fix the dxrtd service
 * add ctypes dependency in dx-rt
-* add dx-app
