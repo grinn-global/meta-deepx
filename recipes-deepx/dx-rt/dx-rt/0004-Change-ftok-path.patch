@@ -1,0 +1,28 @@
+From a9f47f048835ec2f1a0f7681185e60519692c7b5 Mon Sep 17 00:00:00 2001
+From: Mateusz Koza <mateusz.koza@grinn-global.com>
+Date: Fri, 7 Mar 2025 15:21:09 +0100
+Subject: [PATCH] Change ftok path
+Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
+Upstream-Status: Pending
+---
+ lib/wrapper/ipc_wrapper/message_queue/ipc_mq_linux.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/wrapper/ipc_wrapper/message_queue/ipc_mq_linux.cpp b/lib/wrapper/ipc_wrapper/message_queue/ipc_mq_linux.cpp
+index c3c16e1..de215a6 100644
+--- a/lib/wrapper/ipc_wrapper/message_queue/ipc_mq_linux.cpp
++++ b/lib/wrapper/ipc_wrapper/message_queue/ipc_mq_linux.cpp
+@@ -33,11 +33,11 @@ int32_t IPCMessageQueueLinux::Initialize(long msgType, IPCMessageQueueDirection
+     errno = 0;
+     if (direction == IPCMessageQueueDirection::TO_SERVER)
+     {
+-        key = ftok("/usr/local/include/dxrt", 42);
++        key = ftok("/usr/bin/dxrtd", 42);
+     }
+     else
+     {
+-        key = ftok("/usr/local/include/dxrt", 84);
++        key = ftok("/usr/bin/dxrtd", 84);
+     }
+     if (errno != 0)
+     {

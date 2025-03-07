@@ -9,6 +9,7 @@ SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-rt.git;protocol=ssh;branch=ma
            file://0001-Modify-Service.patch \
            file://0002-Modify-CMakeLists.patch \
            file://0003-Remove-install-to-source-directory.patch \
+           file://0004-Change-ftok-path.patch \
            "
 SRCREV = "c19139fe2a2224492e209853b110376c8fc9a1c1"
 

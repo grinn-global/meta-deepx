@@ -40,5 +40,4 @@ Modify these variables in your `local.conf` to change the default behavior.
 
 ## TODO
 
-* change ftok path to fix the dxrtd service
 * add ctypes dependency in dx-rt
