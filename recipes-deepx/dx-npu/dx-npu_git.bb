@@ -8,10 +8,10 @@ inherit module
 
 PROVIDES:${PN} = "kernel-module-${PN}"
 
-PV = "1.3.1+git${SRCPV}"
-SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-npu.git;protocol=ssh;branch=master \
+PV = "1.5.0+git${SRCPV}"
+SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-npu.git;protocol=ssh;branch=release/v1.5.0 \
            file://0001-Modify-Makefile.patch;patchdir=.."
-SRCREV = "217b02ec5a93fec90cf68abf77cae0a55f2e1a89"
+SRCREV = "a026ff8a4ed8934754c90e6ff77c352e7a675339"
 
 S = "${WORKDIR}/git/modules"
 
