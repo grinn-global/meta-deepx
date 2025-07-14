@@ -1,19 +1,23 @@
-From 8bdc1e9d2d954a5d59c630f75c6f657839f887b4 Mon Sep 17 00:00:00 2001
+From a2faa91f6389e8313f27724b01dbf3b5dfced9ed Mon Sep 17 00:00:00 2001
 From: Krzysztof Witkowski <krzysztof.witkowski@grinn-global.com>
 Date: Fri, 11 Jul 2025 15:55:33 +0200
 Subject: [PATCH] Remove install to source directory
 
 ---
  cmake/dxrt.function.cmake                      | 1 -
+ examples/display_async_models_1/CMakeLists.txt | 1 -
+ examples/display_async_models_2/CMakeLists.txt | 1 -
  examples/display_async_pipe/CMakeLists.txt     | 1 -
+ examples/display_async_thread/CMakeLists.txt   | 1 -
  examples/display_async_wait/CMakeLists.txt     | 1 -
  examples/run_async_model/CMakeLists.txt        | 1 -
  examples/run_async_model_output/CMakeLists.txt | 1 -
  examples/run_async_model_thread/CMakeLists.txt | 1 -
  examples/run_async_model_wait/CMakeLists.txt   | 1 -
+ examples/run_batch_model/CMakeLists.txt        | 1 -
  examples/run_sync_model/CMakeLists.txt         | 1 -
  examples/run_sync_model_bound/CMakeLists.txt   | 1 -
- 9 files changed, 9 deletions(-)
+ 13 files changed, 13 deletions(-)
 
 diff --git a/cmake/dxrt.function.cmake b/cmake/dxrt.function.cmake
 index 7bd6b07..6e9c7e1 100644
@@ -27,10 +31,40 @@ index 7bd6b07..6e9c7e1 100644
  endmacro(add_target)
  
  macro(add_clangtidy)
+diff --git a/examples/display_async_models_1/CMakeLists.txt b/examples/display_async_models_1/CMakeLists.txt
+index bbbeb5a..aed8855 100644
+--- a/examples/display_async_models_1/CMakeLists.txt
++++ b/examples/display_async_models_1/CMakeLists.txt
+@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ install( TARGETS ${target} DESTINATION bin/examples )
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
+diff --git a/examples/display_async_models_2/CMakeLists.txt b/examples/display_async_models_2/CMakeLists.txt
+index d20ba8b..56afb35 100644
+--- a/examples/display_async_models_2/CMakeLists.txt
++++ b/examples/display_async_models_2/CMakeLists.txt
+@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ install( TARGETS ${target} DESTINATION bin/examples )
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
 diff --git a/examples/display_async_pipe/CMakeLists.txt b/examples/display_async_pipe/CMakeLists.txt
 index 21517ac..c03530b 100644
 --- a/examples/display_async_pipe/CMakeLists.txt
 +++ b/examples/display_async_pipe/CMakeLists.txt
+@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ install( TARGETS ${target} DESTINATION bin/examples )
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
+diff --git a/examples/display_async_thread/CMakeLists.txt b/examples/display_async_thread/CMakeLists.txt
+index 16f6283..11c8f07 100644
+--- a/examples/display_async_thread/CMakeLists.txt
++++ b/examples/display_async_thread/CMakeLists.txt
 @@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
@@ -81,6 +115,16 @@ diff --git a/examples/run_async_model_wait/CMakeLists.txt b/examples/run_async_m
 index 0fdeb8c..f3b3be4 100644
 --- a/examples/run_async_model_wait/CMakeLists.txt
 +++ b/examples/run_async_model_wait/CMakeLists.txt
+@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ install( TARGETS ${target} DESTINATION bin/examples )
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
+diff --git a/examples/run_batch_model/CMakeLists.txt b/examples/run_batch_model/CMakeLists.txt
+index 0aca83d..8c26f74 100644
+--- a/examples/run_batch_model/CMakeLists.txt
++++ b/examples/run_batch_model/CMakeLists.txt
 @@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
