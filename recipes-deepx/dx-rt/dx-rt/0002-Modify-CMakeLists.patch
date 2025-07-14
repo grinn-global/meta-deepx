@@ -1,15 +1,14 @@
-From bcbdfb176bdd289d2f5191a4bc49a4b63d86b0dd Mon Sep 17 00:00:00 2001
-From: Mateusz Koza <mateusz.koza@grinn-global.com>
-Date: Mon, 3 Mar 2025 20:10:10 +0100
+From 3a08b14c7b48e35958c50a866919212625d302c2 Mon Sep 17 00:00:00 2001
+From: Krzysztof Witkowski <krzysztof.witkowski@grinn-global.com>
+Date: Fri, 11 Jul 2025 15:49:26 +0200
 Subject: [PATCH] Modify CMakeLists
-Signed-off-by: Mateusz Koza <mateusz.koza@grinn-global.com>
-Upstream-Status: Pending
+
 ---
  CMakeLists.txt | 14 +-------------
  1 file changed, 1 insertion(+), 13 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ed1cfa4..f5d541f 100644
+index 70006b0..c6a9fe2 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -29,18 +29,6 @@ set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib ${CMAKE_BINARY_DIR}/lib)
@@ -30,11 +29,14 @@ index ed1cfa4..f5d541f 100644
 -
  # cmake options
  include(dxrt.cfg)
- 
-@@ -249,4 +237,4 @@ foreach(variable ${variables})
+ if (${USE_CLANG})
+@@ -258,4 +246,4 @@ foreach(variable ${variables})
      if(variable MATCHES "^USE_" OR variable MATCHES "^ENABLE_")
          message(STATUS "    ${variable}: ${${variable}}")
      endif()
 -endforeach()
 \ No newline at end of file
 +endforeach()
+-- 
+2.43.0
+
