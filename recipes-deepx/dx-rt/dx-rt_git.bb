@@ -10,10 +10,13 @@ SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-rt.git;protocol=ssh;branch=re
            file://0002-Modify-CMakeLists.patch \
            file://0003-Remove-install-to-source-directory.patch \
            file://0004-Change-ftok-path.patch \
+           file://0005-Disable-get-pybind11-fetch.patch \
            "
 SRCREV = "75dbbad4165f7d1580c43152ae6d46cb20e29f5e"
 
 S = "${WORKDIR}/git"
+
+DEPENDS += "pybind11"
 
 PACKAGECONFIG ??= "python service shared_dxrt_lib"
 PACKAGECONFIG[onnxruntime] = "\
