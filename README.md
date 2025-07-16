@@ -37,7 +37,3 @@ DX_PCIE = "deepx"
 PACKAGECONFIG:pn-dx-rt = " python service shared_dxrt_lib"
 ```
 Modify these variables in your `local.conf` to change the default behavior.
-
-## TODO
-
-* add ctypes dependency in dx-rt

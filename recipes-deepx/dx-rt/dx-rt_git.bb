@@ -45,7 +45,7 @@ SETUPTOOLS_SETUP_PATH = "${S}/python_package"
 SYSTEMD_SERVICE:${PN} = "dxrt.service"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
-RDEPENDS:${PN} += "dx-npu"
+RDEPENDS:${PN} += "dx-npu python3-numpy"
 
 EXTRA_OECMAKE = "${PACKAGECONFIG_CONFARGS} \
                  -DCROSS_COMPILE=TRUE \
