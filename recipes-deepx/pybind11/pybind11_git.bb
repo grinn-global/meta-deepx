@@ -10,6 +10,8 @@ SRCREV = "2e0815278cb899b20870a67ca8205996ef47e70f"
 
 S = "${WORKDIR}/git"
 
+DEPENDS += "python3-native"
+
 inherit cmake
 
 EXTRA_OECMAKE = "-DPYBIND11_TEST=OFF"
