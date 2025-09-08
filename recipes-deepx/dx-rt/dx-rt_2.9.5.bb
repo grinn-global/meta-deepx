@@ -4,14 +4,14 @@ HOMEPAGE = "https://deepx.ai"
 LICENSE = "DEEPX"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
-SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-rt.git;protocol=ssh;branch=release/v2.9.5 \
+SRC_URI = "git://github.com/DEEPX-AI/dx_rt.git;protocol=https;branch=main \
            file://0001-Modify-Service.patch \
            file://0002-Modify-CMakeLists.patch \
            file://0003-Remove-install-to-source-directory.patch \
            file://0004-Change-ftok-path.patch \
            file://0005-Disable-get-pybind11-fetch.patch \
            "
-SRCREV = "75dbbad4165f7d1580c43152ae6d46cb20e29f5e"
+SRCREV = "26348329382252873023911675579868053946d4"
 
 S = "${WORKDIR}/git"
 

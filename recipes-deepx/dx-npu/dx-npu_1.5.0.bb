@@ -8,9 +8,9 @@ inherit module
 
 PROVIDES:${PN} = "kernel-module-${PN}"
 
-SRC_URI = "git://git@gitlab.grinndev.ovh:/deepx/dx-npu.git;protocol=ssh;branch=release/v1.5.0 \
+SRC_URI = "git://github.com/DEEPX-AI/dx_rt_npu_linux_driver.git;protocol=https;branch=main \
            file://0001-Modify-Makefile.patch;patchdir=.."
-SRCREV = "a026ff8a4ed8934754c90e6ff77c352e7a675339"
+SRCREV = "97c009b097b28f1f0e4d2bb9faae2e713e8d5e7e"
 
 S = "${WORKDIR}/git/modules"
 
