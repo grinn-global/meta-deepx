@@ -11,7 +11,7 @@ S = "${WORKDIR}/git"
 
 DEPENDS += "python3-native"
 
-inherit cmake
+inherit cmake python3native
 
 EXTRA_OECMAKE = "-DPYBIND11_TEST=OFF"
 
