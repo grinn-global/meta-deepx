@@ -1,29 +1,35 @@
-From a2faa91f6389e8313f27724b01dbf3b5dfced9ed Mon Sep 17 00:00:00 2001
+From 9ef8208733e5372fd7f006949ac0e82d86d69e0f Mon Sep 17 00:00:00 2001
 From: Krzysztof Witkowski <krzysztof.witkowski@grinn-global.com>
-Date: Fri, 11 Jul 2025 15:55:33 +0200
+Date: Fri, 14 Nov 2025 13:41:52 +0000
 Subject: [PATCH] Remove install to source directory
 
 ---
- cmake/dxrt.function.cmake                      | 1 -
- examples/display_async_models_1/CMakeLists.txt | 1 -
- examples/display_async_models_2/CMakeLists.txt | 1 -
- examples/display_async_pipe/CMakeLists.txt     | 1 -
- examples/display_async_thread/CMakeLists.txt   | 1 -
- examples/display_async_wait/CMakeLists.txt     | 1 -
- examples/run_async_model/CMakeLists.txt        | 1 -
- examples/run_async_model_output/CMakeLists.txt | 1 -
- examples/run_async_model_thread/CMakeLists.txt | 1 -
- examples/run_async_model_wait/CMakeLists.txt   | 1 -
- examples/run_batch_model/CMakeLists.txt        | 1 -
- examples/run_sync_model/CMakeLists.txt         | 1 -
- examples/run_sync_model_bound/CMakeLists.txt   | 1 -
- 13 files changed, 13 deletions(-)
+ cmake/dxrt.function.cmake                               | 1 -
+ examples/cpp/check_versions/CMakeLists.txt              | 2 +-
+ examples/cpp/display_async_models_1/CMakeLists.txt      | 2 +-
+ examples/cpp/display_async_models_2/CMakeLists.txt      | 2 +-
+ examples/cpp/display_async_pipe/CMakeLists.txt          | 2 +-
+ examples/cpp/display_async_thread/CMakeLists.txt        | 2 +-
+ examples/cpp/display_async_wait/CMakeLists.txt          | 2 +-
+ examples/cpp/multi_input_model_inference/CMakeLists.txt | 2 +-
+ examples/cpp/run_async_model/CMakeLists.txt             | 2 +-
+ examples/cpp/run_async_model_bound/CMakeLists.txt       | 2 +-
+ examples/cpp/run_async_model_conf/CMakeLists.txt        | 2 +-
+ examples/cpp/run_async_model_output/CMakeLists.txt      | 2 +-
+ examples/cpp/run_async_model_profiler/CMakeLists.txt    | 2 +-
+ examples/cpp/run_async_model_thread/CMakeLists.txt      | 2 +-
+ examples/cpp/run_async_model_wait/CMakeLists.txt        | 2 +-
+ examples/cpp/run_batch_model/CMakeLists.txt             | 2 +-
+ examples/cpp/run_sync_model/CMakeLists.txt              | 2 +-
+ examples/cpp/run_sync_model_bound/CMakeLists.txt        | 2 +-
+ examples/cpp/run_sync_model_output/CMakeLists.txt       | 2 +-
+ 19 files changed, 18 insertions(+), 19 deletions(-)
 
 diff --git a/cmake/dxrt.function.cmake b/cmake/dxrt.function.cmake
-index 7bd6b07..6e9c7e1 100644
+index 4b41e97..359d6ab 100644
 --- a/cmake/dxrt.function.cmake
 +++ b/cmake/dxrt.function.cmake
-@@ -57,7 +57,6 @@ macro(add_target target)
+@@ -58,7 +58,6 @@ macro(add_target target)
      add_executable(${target} ${ARG_SRC_LIST})
      add_dxrt(${target})
      install(TARGETS ${target} DESTINATION bin)
@@ -31,126 +37,219 @@ index 7bd6b07..6e9c7e1 100644
  endmacro(add_target)
  
  macro(add_clangtidy)
-diff --git a/examples/display_async_models_1/CMakeLists.txt b/examples/display_async_models_1/CMakeLists.txt
-index bbbeb5a..aed8855 100644
---- a/examples/display_async_models_1/CMakeLists.txt
-+++ b/examples/display_async_models_1/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
+diff --git a/examples/cpp/check_versions/CMakeLists.txt b/examples/cpp/check_versions/CMakeLists.txt
+index 55bcda9..a9f2214 100644
+--- a/examples/cpp/check_versions/CMakeLists.txt
++++ b/examples/cpp/check_versions/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/display_async_models_2/CMakeLists.txt b/examples/display_async_models_2/CMakeLists.txt
-index d20ba8b..56afb35 100644
---- a/examples/display_async_models_2/CMakeLists.txt
-+++ b/examples/display_async_models_2/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/display_async_models_1/CMakeLists.txt b/examples/cpp/display_async_models_1/CMakeLists.txt
+index 8b303cd..399b187 100644
+--- a/examples/cpp/display_async_models_1/CMakeLists.txt
++++ b/examples/cpp/display_async_models_1/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/display_async_pipe/CMakeLists.txt b/examples/display_async_pipe/CMakeLists.txt
-index 21517ac..c03530b 100644
---- a/examples/display_async_pipe/CMakeLists.txt
-+++ b/examples/display_async_pipe/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/display_async_models_2/CMakeLists.txt b/examples/cpp/display_async_models_2/CMakeLists.txt
+index bc45a49..3dd5c35 100644
+--- a/examples/cpp/display_async_models_2/CMakeLists.txt
++++ b/examples/cpp/display_async_models_2/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/display_async_thread/CMakeLists.txt b/examples/display_async_thread/CMakeLists.txt
-index 16f6283..11c8f07 100644
---- a/examples/display_async_thread/CMakeLists.txt
-+++ b/examples/display_async_thread/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/display_async_pipe/CMakeLists.txt b/examples/cpp/display_async_pipe/CMakeLists.txt
+index 0288444..62c82e5 100644
+--- a/examples/cpp/display_async_pipe/CMakeLists.txt
++++ b/examples/cpp/display_async_pipe/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/display_async_wait/CMakeLists.txt b/examples/display_async_wait/CMakeLists.txt
-index 1cc5784..7256748 100644
---- a/examples/display_async_wait/CMakeLists.txt
-+++ b/examples/display_async_wait/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/display_async_thread/CMakeLists.txt b/examples/cpp/display_async_thread/CMakeLists.txt
+index 49f1958..ea27026 100644
+--- a/examples/cpp/display_async_thread/CMakeLists.txt
++++ b/examples/cpp/display_async_thread/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/run_async_model/CMakeLists.txt b/examples/run_async_model/CMakeLists.txt
-index cedad6d..6ac6708 100644
---- a/examples/run_async_model/CMakeLists.txt
-+++ b/examples/run_async_model/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/display_async_wait/CMakeLists.txt b/examples/cpp/display_async_wait/CMakeLists.txt
+index b81fa04..9fbfe4c 100644
+--- a/examples/cpp/display_async_wait/CMakeLists.txt
++++ b/examples/cpp/display_async_wait/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/run_async_model_output/CMakeLists.txt b/examples/run_async_model_output/CMakeLists.txt
-index bd735bb..b8528c2 100644
---- a/examples/run_async_model_output/CMakeLists.txt
-+++ b/examples/run_async_model_output/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/multi_input_model_inference/CMakeLists.txt b/examples/cpp/multi_input_model_inference/CMakeLists.txt
+index 2843fc8..4eb97bc 100644
+--- a/examples/cpp/multi_input_model_inference/CMakeLists.txt
++++ b/examples/cpp/multi_input_model_inference/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/run_async_model_thread/CMakeLists.txt b/examples/run_async_model_thread/CMakeLists.txt
-index 042cbaa..5f28acd 100644
---- a/examples/run_async_model_thread/CMakeLists.txt
-+++ b/examples/run_async_model_thread/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_async_model/CMakeLists.txt b/examples/cpp/run_async_model/CMakeLists.txt
+index cdd0054..3791965 100644
+--- a/examples/cpp/run_async_model/CMakeLists.txt
++++ b/examples/cpp/run_async_model/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/run_async_model_wait/CMakeLists.txt b/examples/run_async_model_wait/CMakeLists.txt
-index 0fdeb8c..f3b3be4 100644
---- a/examples/run_async_model_wait/CMakeLists.txt
-+++ b/examples/run_async_model_wait/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_async_model_bound/CMakeLists.txt b/examples/cpp/run_async_model_bound/CMakeLists.txt
+index 019c11a..1945c2b 100644
+--- a/examples/cpp/run_async_model_bound/CMakeLists.txt
++++ b/examples/cpp/run_async_model_bound/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/run_batch_model/CMakeLists.txt b/examples/run_batch_model/CMakeLists.txt
-index 0aca83d..8c26f74 100644
---- a/examples/run_batch_model/CMakeLists.txt
-+++ b/examples/run_batch_model/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_async_model_conf/CMakeLists.txt b/examples/cpp/run_async_model_conf/CMakeLists.txt
+index 1f5354b..052ec0c 100644
+--- a/examples/cpp/run_async_model_conf/CMakeLists.txt
++++ b/examples/cpp/run_async_model_conf/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/run_sync_model/CMakeLists.txt b/examples/run_sync_model/CMakeLists.txt
-index daf47bb..5248bee 100644
---- a/examples/run_sync_model/CMakeLists.txt
-+++ b/examples/run_sync_model/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_async_model_output/CMakeLists.txt b/examples/cpp/run_async_model_output/CMakeLists.txt
+index 0b0b5e8..d5ce85a 100644
+--- a/examples/cpp/run_async_model_output/CMakeLists.txt
++++ b/examples/cpp/run_async_model_output/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
-diff --git a/examples/run_sync_model_bound/CMakeLists.txt b/examples/run_sync_model_bound/CMakeLists.txt
-index 2601e14..d39b941 100644
---- a/examples/run_sync_model_bound/CMakeLists.txt
-+++ b/examples/run_sync_model_bound/CMakeLists.txt
-@@ -6,4 +6,3 @@ add_executable(${target} ${srcs})
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_async_model_profiler/CMakeLists.txt b/examples/cpp/run_async_model_profiler/CMakeLists.txt
+index 870a647..d672ec4 100644
+--- a/examples/cpp/run_async_model_profiler/CMakeLists.txt
++++ b/examples/cpp/run_async_model_profiler/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
  target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
  add_dxrt(${target})
- install( TARGETS ${target} DESTINATION bin/examples )
+ 
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
 \ No newline at end of file
--- 
-2.43.0
-
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_async_model_thread/CMakeLists.txt b/examples/cpp/run_async_model_thread/CMakeLists.txt
+index f9f4d0e..8399ea3 100644
+--- a/examples/cpp/run_async_model_thread/CMakeLists.txt
++++ b/examples/cpp/run_async_model_thread/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ 
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_async_model_wait/CMakeLists.txt b/examples/cpp/run_async_model_wait/CMakeLists.txt
+index e3253f4..ec880df 100644
+--- a/examples/cpp/run_async_model_wait/CMakeLists.txt
++++ b/examples/cpp/run_async_model_wait/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ 
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_batch_model/CMakeLists.txt b/examples/cpp/run_batch_model/CMakeLists.txt
+index 7223aad..45133a2 100644
+--- a/examples/cpp/run_batch_model/CMakeLists.txt
++++ b/examples/cpp/run_batch_model/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ 
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_sync_model/CMakeLists.txt b/examples/cpp/run_sync_model/CMakeLists.txt
+index a74543d..f2ba6bc 100644
+--- a/examples/cpp/run_sync_model/CMakeLists.txt
++++ b/examples/cpp/run_sync_model/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ 
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_sync_model_bound/CMakeLists.txt b/examples/cpp/run_sync_model_bound/CMakeLists.txt
+index 7854214..a2dbe44 100644
+--- a/examples/cpp/run_sync_model_bound/CMakeLists.txt
++++ b/examples/cpp/run_sync_model_bound/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ 
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file
+diff --git a/examples/cpp/run_sync_model_output/CMakeLists.txt b/examples/cpp/run_sync_model_output/CMakeLists.txt
+index 707a9f8..cdbb84b 100644
+--- a/examples/cpp/run_sync_model_output/CMakeLists.txt
++++ b/examples/cpp/run_sync_model_output/CMakeLists.txt
+@@ -6,4 +6,4 @@ add_executable(${target} ${srcs})
+ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+ add_dxrt(${target})
+ 
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin/examples )
+\ No newline at end of file
++install( TARGETS ${target} DESTINATION bin/examples )
+\ No newline at end of file

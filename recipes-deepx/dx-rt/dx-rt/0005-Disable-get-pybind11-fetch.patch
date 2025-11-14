@@ -1,18 +1,18 @@
-From 99e4c9946c84e16a0d85bd8df126440e3c649091 Mon Sep 17 00:00:00 2001
+From 9f2eb8f7f38d5f90d760c9043600c3b5db33ce57 Mon Sep 17 00:00:00 2001
 From: Krzysztof Witkowski <krzysztof.witkowski@grinn-global.com>
-Date: Mon, 14 Jul 2025 15:19:05 +0200
+Date: Fri, 14 Nov 2025 14:07:14 +0000
 Subject: [PATCH] Disable get pybind11 fetch
 
 ---
  CMakeLists.txt            | 6 +-----
- cmake/dxrt.function.cmake | 6 ------
- 2 files changed, 1 insertion(+), 11 deletions(-)
+ cmake/dxrt.function.cmake | 7 -------
+ 2 files changed, 1 insertion(+), 12 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c6a9fe2..1a4f09a 100644
+index 47125e3..59ab80a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -158,9 +158,7 @@ endif()
+@@ -217,9 +217,7 @@ endif()
  #endif()
  
  if(USE_PYTHON)
@@ -23,7 +23,7 @@ index c6a9fe2..1a4f09a 100644
      find_package(Python COMPONENTS Interpreter Development REQUIRED)
  
      #find_package(PythonInterp ${PYBIND11_PYTHON_VERSION} REQUIRED)
-@@ -184,8 +182,6 @@ if(USE_PYTHON)
+@@ -243,8 +241,6 @@ if(USE_PYTHON)
      else ()
          message(FATAL_ERROR "Python not found.")
      endif ()
@@ -33,19 +33,17 @@ index c6a9fe2..1a4f09a 100644
      include_directories(${PYTHON_INCLUDE_DIRS})
      # include_directories(/usr/include/eigen3)
 diff --git a/cmake/dxrt.function.cmake b/cmake/dxrt.function.cmake
-index 6e9c7e1..31a0ca8 100644
+index 359d6ab..31a0ca8 100644
 --- a/cmake/dxrt.function.cmake
 +++ b/cmake/dxrt.function.cmake
-@@ -1,9 +1,3 @@
+@@ -1,10 +1,3 @@
 -macro(get_pybind11)
 -  if(NOT EXISTS "${CMAKE_SOURCE_DIR}/extern/pybind11")
--    execute_process(COMMAND git clone --branch v2.12 https://github.com/pybind/pybind11.git ${CMAKE_SOURCE_DIR}/${PYBIND_TARGET_DIR})
+-    set(CMAKE_TLS_VERIFY false)
+-    execute_process(COMMAND git clone --branch v2.12 git@github.com:pybind/pybind11.git ${CMAKE_SOURCE_DIR}/${PYBIND_TARGET_DIR})
 -  endif()
 -endmacro(get_pybind11)
 -
  macro(add_googletest target)
    if(MSVC)
      find_package(GTest CONFIG REQUIRED)
--- 
-2.43.0
-
