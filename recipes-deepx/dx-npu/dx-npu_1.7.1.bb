@@ -10,7 +10,7 @@ PROVIDES:${PN} = "kernel-module-${PN}"
 
 SRC_URI = "git://github.com/DEEPX-AI/dx_rt_npu_linux_driver.git;protocol=https;branch=main \
            file://0001-Modify-Makefile.patch;patchdir=.."
-SRCREV = "97c009b097b28f1f0e4d2bb9faae2e713e8d5e7e"
+SRCREV = "9b61de90a03aa9948eacc0709322fbca664a84cf"
 
 S = "${WORKDIR}/git/modules"
 
