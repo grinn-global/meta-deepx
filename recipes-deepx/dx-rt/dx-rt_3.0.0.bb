@@ -11,7 +11,7 @@ SRC_URI = "git://github.com/DEEPX-AI/dx_rt.git;protocol=https;branch=main \
            file://0004-Change-ftok-path.patch \
            file://0005-Disable-get-pybind11-fetch.patch \
            "
-SRCREV = "26348329382252873023911675579868053946d4"
+SRCREV = "559f6f19665920d166a5aa1f51880fd72ee529f2"
 
 S = "${WORKDIR}/git"
 
