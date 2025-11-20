@@ -1,0 +1,30 @@
+From f61f9861cf88d6f54f1c1f83be825fa70aecc58e Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Thu, 20 Nov 2025 11:57:18 +0000
+Subject: [PATCH] Find cmake from PATH instead of CMAKE_BIN_DIR
+
+---
+ scikit_build_core/program_search.py | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/scikit_build_core/program_search.py b/scikit_build_core/program_search.py
+index 7995c14..f82cad3 100644
+--- a/scikit_build_core/program_search.py
++++ b/scikit_build_core/program_search.py
+@@ -90,16 +90,6 @@ class Program(NamedTuple):
+ 
+ 
+ def _get_cmake_path(*, module: bool = True) -> Generator[Path, None, None]:
+-    """
+-    Get the path to CMake.
+-    """
+-    if module:
+-        with contextlib.suppress(ImportError):
+-            # If a "cmake" directory exists, this will also ImportError
+-            from cmake import CMAKE_BIN_DIR
+-
+-            yield Path(CMAKE_BIN_DIR) / "cmake"
+-
+     candidates = ("cmake3", "cmake")
+     for candidate in candidates:
+         cmake_path = shutil.which(candidate)

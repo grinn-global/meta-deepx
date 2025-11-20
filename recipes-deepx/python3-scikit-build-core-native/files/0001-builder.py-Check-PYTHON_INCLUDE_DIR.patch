@@ -1,0 +1,22 @@
+From 84ecf8fa2b15b69c45e8ac4736489ec220830590 Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Thu, 20 Nov 2025 11:52:55 +0000
+Subject: [PATCH] builder.py: Check PYTHON_INCLUDE_DIR
+
+---
+ scikit_build_core/builder/builder.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scikit_build_core/builder/builder.py b/scikit_build_core/builder/builder.py
+index dde36dd..fc23596 100644
+--- a/scikit_build_core/builder/builder.py
++++ b/scikit_build_core/builder/builder.py
+@@ -228,7 +228,7 @@ class Builder:
+         python_sabi_library = (
+             get_python_library(self.config.env, abi3=True) if limited_api else None
+         )
+-        python_include_dir = get_python_include_dir()
++        python_include_dir = os.getenv("PYTHON_INCLUDE_DIR") or get_python_include_dir()
+         numpy_include_dir = get_numpy_include_dir()
+ 
+         # Warning for CPython 3.13.4 Windows bug
