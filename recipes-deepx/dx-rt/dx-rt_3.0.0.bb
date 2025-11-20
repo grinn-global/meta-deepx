@@ -10,6 +10,7 @@ SRC_URI = "git://github.com/DEEPX-AI/dx_rt.git;protocol=https;branch=main \
            file://0003-Remove-install-to-source-directory.patch \
            file://0004-Change-ftok-path.patch \
            file://0005-Disable-get-pybind11-fetch.patch \
+           file://0006-Use-RelWithDebInfo-for-scikit-build.patch \
            "
 SRCREV = "559f6f19665920d166a5aa1f51880fd72ee529f2"
 

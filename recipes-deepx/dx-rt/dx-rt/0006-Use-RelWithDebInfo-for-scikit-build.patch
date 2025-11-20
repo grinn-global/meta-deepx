@@ -1,0 +1,20 @@
+From d9fa45e356ce7ffbabc91ea76e959e52f5cefb60 Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Thu, 20 Nov 2025 16:07:11 +0000
+Subject: [PATCH] Use RelWithDebInfo for scikit build
+
+---
+ python_package/pyproject.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/python_package/pyproject.toml b/python_package/pyproject.toml
+index 8ed79d3..483b82c 100644
+--- a/python_package/pyproject.toml
++++ b/python_package/pyproject.toml
+@@ -50,5 +50,6 @@ Homepage = "https://deepx.ai"
+ 
+ [tool.scikit-build]
+ cmake.source-dir = "src/dx_engine/capi" 
++cmake.build-type = "RelWithDebInfo"
+ wheel.packages = ["src/dx_engine"]
+ 
