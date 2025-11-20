@@ -15,7 +15,7 @@ SRCREV = "559f6f19665920d166a5aa1f51880fd72ee529f2"
 
 S = "${WORKDIR}/git"
 
-DEPENDS += "pybind11"
+DEPENDS += "pybind11 pybind11-native python3-scikit-build-core-native"
 
 PACKAGECONFIG ??= "python service shared_dxrt_lib"
 PACKAGECONFIG[onnxruntime] = "\
@@ -37,10 +37,11 @@ PACKAGECONFIG[shared_dxrt_lib] = "\
     -DUSE_SHARED_DXRT_LIB=OFF"
 
 inherit cmake
-inherit ${@bb.utils.contains('PACKAGECONFIG', 'python', 'setuptools3', '', d)}
+inherit ${@bb.utils.contains('PACKAGECONFIG', 'python', 'python_setuptools_build_meta', '', d)}
 inherit ${@bb.utils.contains('PACKAGECONFIG', 'service', 'systemd', '', d)}
 
-SETUPTOOLS_SETUP_PATH = "${S}/python_package"
+PEP517_SOURCE_PATH = "${S}/python_package"
+PEP517_BUILD_API = "scikit_build_core.build"
 SYSTEMD_SERVICE:${PN} = "dxrt.service"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
@@ -55,14 +56,16 @@ EXTRA_OECMAKE = "${PACKAGECONFIG_CONFARGS} \
 do_configure() {
     cmake_do_configure
     if ${@bb.utils.contains('PACKAGECONFIG', 'python', 'true', 'false', d)}; then
-        setuptools3_do_configure
+        python_pep517_do_configure
     fi
 }
 
 do_compile() {
     cmake_do_compile
     if ${@bb.utils.contains('PACKAGECONFIG', 'python', 'true', 'false', d)}; then
-        setuptools3_do_compile
+        # Temporary fix by copying libdxrt.so to reciepe-sysroot
+        install -m 0644 ${B}/lib/libdxrt.so ${STAGING_DIR_TARGET}${libdir}
+        python_pep517_do_compile
     fi
 }
 
@@ -75,6 +78,6 @@ do_install() {
     fi
 
     if ${@bb.utils.contains('PACKAGECONFIG', 'python', 'true', 'false', d)}; then
-        setuptools3_do_install
+        python_pep517_do_install
     fi
 }
