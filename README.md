@@ -12,11 +12,6 @@ To use the meta-deepx layer, add the following to your `local.conf`:
 IMAGE_INSTALL:append = " dx-rt"
 ```
 
-To supress the QA warning, add the following to your `local.conf`:
-```bash
-LICENSE_PATH += "${TOPDIR}/../meta-deepx/custom-licenses"
-```
-
 Note that the dx-npu recipe requires `DMA_ENGINE` option to be enabled in the kernel. Use this command to modify the kernel configuration:
 ```bash
 bitbake -c menuconfig virtual/kernel

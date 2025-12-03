@@ -2,6 +2,7 @@ SUMMARY = "DX-RT"
 DESCRIPTION = "DeepX Runtime and Userspace Tools"
 HOMEPAGE = "https://deepx.ai"
 LICENSE = "DEEPX"
+NO_GENERIC_LICENSE[DEEPX] = "LICENSE"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 SRC_URI = "git://github.com/DEEPX-AI/dx_rt.git;protocol=https;branch=main \

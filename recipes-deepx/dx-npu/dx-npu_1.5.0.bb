@@ -2,6 +2,7 @@ SUMMARY = "DX-NPU"
 DESCRIPTION = "DeepX Neural Processing Unit Linux Kernel Drivers"
 HOMEPAGE = "https://deepx.ai"
 LICENSE = "DEEPX"
+NO_GENERIC_LICENSE[DEEPX] = "../LICENSE"
 LIC_FILES_CHKSUM = "file://../LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 inherit module
