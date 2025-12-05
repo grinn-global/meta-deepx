@@ -7,6 +7,8 @@ LIC_FILES_CHKSUM = "file://../LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 inherit module
 
+FILES:${PN} = "/etc/modprobe.d/dx_dma.conf"
+
 PROVIDES:${PN} = "kernel-module-${PN}"
 
 SRC_URI = "git://github.com/DEEPX-AI/dx_rt_npu_linux_driver.git;protocol=https;branch=main \
